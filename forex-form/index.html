@@ -175,7 +175,17 @@
     </div>
 
     <div class="field">
-      <label>2. What is your experience in trades?</label>
+      <label for="whatsapp">2. Your WhatsApp Number</label>
+      <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. 0300 1234567" required>
+    </div>
+
+    <div class="field">
+      <label for="city">3. City / Country</label>
+      <input type="text" id="city" name="city" placeholder="e.g. Lahore, Pakistan" required>
+    </div>
+
+    <div class="field">
+      <label>4. What is your experience in trades?</label>
       <div class="options">
         <label class="option"><input type="radio" name="experience" value="Watched videos / small trades" required><span>Watched videos / small trades</span></label>
         <label class="option"><input type="radio" name="experience" value="Just watched videos"><span>Just watched videos</span></label>
@@ -184,7 +194,7 @@
     </div>
 
     <div class="field">
-      <label>3. What is your goal?</label>
+      <label>5. What is your goal?</label>
       <div class="options">
         <label class="option"><input type="radio" name="goal" value="Generate a side income" required><span>Generate a side income</span></label>
         <label class="option"><input type="radio" name="goal" value="Learn a high-income skill"><span>Learn a high-income skill</span></label>
@@ -192,23 +202,13 @@
     </div>
 
     <div class="field">
-      <label>4. When do you want to start?</label>
+      <label>6. When do you want to start?</label>
       <div class="options">
         <label class="option"><input type="radio" name="start" value="Immediately" required><span>Immediately</span></label>
         <label class="option"><input type="radio" name="start" value="After 1 week"><span>After 1 week</span></label>
         <label class="option"><input type="radio" name="start" value="After 1 month"><span>After 1 month</span></label>
         <label class="option"><input type="radio" name="start" value="Will start anytime in life"><span>Will start anytime in life</span></label>
       </div>
-    </div>
-
-    <div class="field">
-      <label for="whatsapp">5. Your WhatsApp Number</label>
-      <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. 0300 1234567" required>
-    </div>
-
-    <div class="field">
-      <label for="city">6. City / Country</label>
-      <input type="text" id="city" name="city" placeholder="e.g. Lahore, Pakistan" required>
     </div>
 
     <button type="submit" class="submit-btn">Submit Application</button>
@@ -228,21 +228,21 @@
 
     // Save form data in localStorage for thank-you page
     localStorage.setItem("forexName", data.get("name"));
+    localStorage.setItem("forexWhatsapp", data.get("whatsapp"));
+    localStorage.setItem("forexCity", data.get("city"));
     localStorage.setItem("forexExp", data.get("experience"));
     localStorage.setItem("forexGoal", data.get("goal"));
     localStorage.setItem("forexStart", data.get("start"));
-    localStorage.setItem("forexWhatsapp", data.get("whatsapp"));
-    localStorage.setItem("forexCity", data.get("city"));
 
     // Open WhatsApp with pre-filled message
     const adminNumber = "923361112960"; // 0336 111 2960
     let msg = "📋 *Forex Mentorship Program – New Application*\n\n";
     msg += "👤 Name: " + data.get("name") + "\n";
+    msg += "📱 WhatsApp: " + data.get("whatsapp") + "\n";
+    msg += "📍 City: " + data.get("city") + "\n";
     msg += "📈 Experience: " + data.get("experience") + "\n";
     msg += "🎯 Goal: " + data.get("goal") + "\n";
-    msg += "⏰ Start: " + data.get("start") + "\n";
-    msg += "📱 WhatsApp: " + data.get("whatsapp") + "\n";
-    msg += "📍 City: " + data.get("city");
+    msg += "⏰ Start: " + data.get("start");
 
     const url = "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(msg);
     window.open(url, "_blank");
