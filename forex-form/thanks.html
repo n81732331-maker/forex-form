@@ -129,17 +129,6 @@
     gap: 8px;
   }
 
-  .btn-exit {
-    background: #eef2f5;
-    color: #2c5364;
-    border: 2px solid #d4dde4;
-  }
-
-  .btn-exit:hover {
-    background: #e0e6ed;
-    transform: translateY(-2px);
-  }
-
   .btn-wa {
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: #fff;
@@ -190,7 +179,6 @@
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-exit" onclick="exitPage()">✖ Exit</button>
     <a class="btn btn-wa" id="waLink" href="#" target="_blank">
       💬 WhatsApp
     </a>
@@ -233,16 +221,6 @@
 
   document.getElementById("waLink").href =
     "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(msg);
-
-  // Exit button
-  function exitPage() {
-    // Close tab if opened by script, otherwise go back / blank
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = "about:blank";
-    }
-  }
 </script>
 
 </body>
