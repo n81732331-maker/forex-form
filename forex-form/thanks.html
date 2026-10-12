@@ -95,6 +95,7 @@
     color: #2c5364;
     line-height: 1.8;
     text-align: left;
+    overflow-wrap: anywhere;
   }
 
   .info-box .label {
@@ -185,7 +186,7 @@
     <div><span class="label">Goal:</span> <span id="sGoal">—</span></div>
     <div><span class="label">Start:</span> <span id="sStart">—</span></div>
     <div><span class="label">WhatsApp:</span> <span id="sWa">—</span></div>
-    <div><span class="label">City:</span> <span id="sCity">—</span></div>
+    <div><span class="label">Email:</span> <span id="sEmail">—</span></div>
   </div>
 
   <div class="btn-row">
@@ -203,19 +204,23 @@
 
 <script>
   // Load form data from localStorage
-  const name = localStorage.getItem("forexName") || "—";
-  const exp  = localStorage.getItem("forexExp") || "—";
-  const goal = localStorage.getItem("forexGoal") || "—";
-  const start= localStorage.getItem("forexStart") || "—";
-  const wa   = localStorage.getItem("forexWhatsapp") || "—";
-  const city = localStorage.getItem("forexCity") || "—";
+  function get(key) {
+    try { return localStorage.getItem(key) || "—"; } catch (e) { return "—"; }
+  }
+
+  const name  = get("forexName");
+  const exp   = get("forexExp");
+  const goal  = get("forexGoal");
+  const start = get("forexStart");
+  const wa    = get("forexWhatsapp");
+  const email = get("forexEmail");
 
   document.getElementById("sName").textContent  = name;
   document.getElementById("sExp").textContent   = exp;
   document.getElementById("sGoal").textContent  = goal;
   document.getElementById("sStart").textContent = start;
   document.getElementById("sWa").textContent    = wa;
-  document.getElementById("sCity").textContent  = city;
+  document.getElementById("sEmail").textContent = email;
 
   // WhatsApp button link
   const adminNumber = "923361112960"; // 0336 111 2960
@@ -224,7 +229,7 @@
   msg += "📈 Experience: " + exp + "\n";
   msg += "🎯 Goal: " + goal + "\n";
   msg += "⏰ Start: " + start + "\n";
-  msg += "📍 City: " + city;
+  msg += "✉️ Email: " + email;
 
   document.getElementById("waLink").href =
     "https://wa.me/" + adminNumber + "?text=" + encodeURIComponent(msg);
